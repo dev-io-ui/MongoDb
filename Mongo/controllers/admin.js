@@ -13,6 +13,17 @@ exports.postAddProduct = (req, res, next) => {
     null,
     req.user._id
   );
+  product
+  .save()
+  .then((result) => {
+    // console.log(result);
+    console.log("Created Product");
+    res.redirect("/admin/products");
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+};
 
 exports.getAddProduct = (req, res, next) => {
   res.render("admin/edit-product", {
