@@ -3,7 +3,7 @@ const MongoClient = mongoDB.MongoClient;
 
 let _db;
 const mongoConnect = (callback) => {
-  MongoClient.connect("mongodb+srv://akashpuranik:root@cluster0.6h4xikq.mongodb.net/shop"
+  MongoClient.connect("mongodb+srv://dev:root@dev@cluster0.y8qyl.mongodb.net/shop?retryWrites=true&w=majority&appName=Cluster0"
 
   )
     .then((client) => {
