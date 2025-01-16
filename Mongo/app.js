@@ -19,11 +19,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use((req, res, next) => {
-  // User.findById("643d788b766004f0e0226739").then((user) => {
-  //   req.user = user;
-  //   next();
-  // });
-  next();
+  User.findById('678902f78c9a5f8d00f14871').then((user) => {
+    req.user = user;
+    next();
+  });
 });
 
 app.use("/admin", adminRoutes);
@@ -33,7 +32,7 @@ app.use(errorController.get404);
 
 mongoose
   .connect(
-    "mongodb+srv://dev:root@dev@cluster0.y8qyl.mongodb.net/shop?retryWrites=true&w=majority&appName=Cluster0"
+    "mongodb+srv://akashpuranik06:root@cluster0.ti10o.mongodb.net/shop"
   )
   .then((result) => {
     User.findOne().then((user) => {
@@ -48,6 +47,7 @@ mongoose
         user.save();
       }
     });
+    console.log("connect");
     app.listen(3000);
   })
   .catch((err) => {
